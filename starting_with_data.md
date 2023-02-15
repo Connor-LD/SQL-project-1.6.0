@@ -49,19 +49,19 @@
 -- Part 1: find date range
 -- SELECT MIN(date),MAX(date) FROM all_sessions LIMIT 100;
 -- Part 2:  find unique visitors by month
--- SELECT 	dategen.date,
+-- SELECT 	dategen.month,
 -- 	(
 -- 		SELECT COUNT(DISTINCT full_visitor_id) 
 -- 		FROM all_sessions 
 -- 		WHERE date > date - interval '1 month'
--- 			and date < dategen.date + interval '1 month'
+-- 			and date < dategen.month + interval '1 month'
 -- 	) as visitor_count
 -- 	FROM
--- 	(	-- generates a list of days in august
+-- 	(	-- generates a list of months
 -- 		SELECT 	CAST(generate_series(timestamp '2016-08-01',
--- 			'2017-08-01','1 month') as date) as date
+-- 			'2017-08-01','1 month') as date) as month
 -- 	)  as dategen
--- ORDER BY dategen.date;
+-- ORDER BY dategen.month;
 -- Answer:
 -- Looks like web traffic is growing!
 
